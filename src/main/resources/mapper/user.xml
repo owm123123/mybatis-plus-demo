@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mybatisplusdemo.user.repository.UserRepository">
+    <!--  ew.customSqlSegment 是 MyBatis-Plus 提供的條件 SQL 佔位符，它會把 LambdaQueryWrapper 的條件轉換成 SQL 語句。  -->
+    <select id="selectAll" resultType="com.example.mybatisplusdemo.user.repository.entity.UserEntity">
+        select * FROM `user_info` ${ew.customSqlSegment}
+    </select>
+</mapper>

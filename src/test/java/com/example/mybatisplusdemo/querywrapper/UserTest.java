@@ -67,5 +67,15 @@ public class UserTest {
         list.forEach(System.out::println);
     }
 
+    // 自定義 SQL + XML 設定
+    @Test
+    public void selectMy() {
+        LambdaQueryWrapper<UserEntity> lambda = Wrappers.lambdaQuery();
+        lambda.like(UserEntity::getUsername, "i")
+                .and(lqw -> lqw.lt(UserEntity::getAge, 30)
+                        .or().isNotNull(UserEntity::getGender));
 
+        List<UserEntity> userList = userRepository.selectAll(lambda);
+        userList.forEach(System.out::println);
+    }
 }
